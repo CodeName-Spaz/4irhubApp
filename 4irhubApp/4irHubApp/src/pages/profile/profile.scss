@@ -19,7 +19,13 @@ page-profile {
         transform: translateY(-50%);
         width    : 100%;
     }
-
+    .myGrid{
+        width: 100%;
+        display: flex;
+    }
+    .myGrid > div{
+        width: 50%
+    }
     .orgImage {
         position     : absolute;
         top          : 0;
@@ -147,10 +153,11 @@ page-profile {
         background    : white;
         padding-bottom: 0px;
         border-bottom : 1px solid rgba(189, 189, 189, 0.2);
+        z-index: 100000000000000000000000000;
     }
 
     .list {
-        height       : 25vh;
+        height       : 20vh;
         position     : relative;
         border       : 0.5px solid rgba(177, 177, 177, 0.411);
         padding-top  : 0px;
@@ -172,23 +179,26 @@ page-profile {
     .stars {
         position: absolute;
         width   : 100%;
-        bottom  : 5px;
+        bottom  : 8px;
         z-index : 1000000000;
         color   : white;
     }
 
     ion-slides {
-        height     : 26vh;
+        height     : 22.5vh;
         background : rgb(255, 255, 255);
         padding-top: 10px;
+        // border: 2px solid red;
     }
 
     .infoCard {
         box-shadow: 0 0 0 white;
     }
 
-    .body {
+    .myBody {
         background: rgb(255, 255, 255);
+        height: 100%;
+        overflow-y: scroll;
     }
 
     h3 {

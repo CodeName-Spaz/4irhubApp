@@ -1,4 +1,3 @@
-
 <ion-content class="body">
   <div class="popover">
     <button ion-button clear class="popoverOptions" color="custom">Edit Profile</button>
@@ -11,7 +10,7 @@
   </ion-fab>
 
 
-  <div class="body" (click)="bodyClick()">
+  <div class="myBody" (click)="bodyClick()">
     <div class="navs">
 
       <div class="profile">
@@ -24,36 +23,45 @@
         <div class="restOfBody">
           <p class="infogram" id="theAbout">About</p>
           <ion-card class="infoCard" padding>
-            <p class="subInfogram">Email</p>
-            <p>spazgrafficz@outlook.com</p>
-            <p class="subInfogram">
-              Mobile
-            </p>
-            <p>0813917127</p>
-            <p class="subInfogram">
-              Date of Birth
-            </p>
-            <p>30 March 1995</p>
-            <p class="subInfogram">
-              Year Graduated from Highschool
-            </p>
-            <p>2013</p>
-            <p class="subInfogram">
-              Residential Address
-            </p>
-            <p>4877 Ugago Street Protea Glen Ext 3 Johannesburg 1819</p>
+            <div class="myGrid">
+              <div>
+                <p class="subInfogram">Email</p>
+                <p>spazgrafficz@outlook.com</p>
+                <p class="subInfogram">
+                  Mobile
+                </p>
+                <p>0813917127</p>
+                <p class="subInfogram">
+                  Residential Address
+                </p>
+                <p>4877 Ugago Street Protea Glen Ext 3 Johannesburg 1819</p>
+              </div>
+              <div>
+                <p class="subInfogram">
+                  Date of Birth
+                </p>
+                <p>30 March 1995</p>
+                <p class="subInfogram">
+                  Age Today
+                </p>
+                <p>24</p>
+                <p class="subInfogram">
+                  Highschool graduation Year
+                </p>
+                <p>2013</p>
+              </div>
+            </div>
           </ion-card>
 
           <p class="infogram" id="myReviews">My Reviews</p>
         </div>
       </div>
     </div>
-  </div>
   <div class="empty">
     <!-- show this if user has not made reviews -->
-    <img class="telescope" src="../../assets/imgs/Defaults/empty.png" alt="">  
+    <img class="telescope" src="../../assets/imgs/Defaults/empty.png" alt="">
     <p class="itsEmpty">You haven't made any reviews so far...</p>
-    </div>
+  </div>
   <ion-slides slidesPerView="2" color="dark">
 
     <div>
@@ -61,6 +69,7 @@
         <ion-card class="list">
           <h3 class="orgName">The Department of Arts and Culture</h3>
           <div class="stars">
+            <ion-icon name="star"></ion-icon> 5
           </div>
           <div class="overlay">
 
@@ -71,4 +80,5 @@
       </ion-slide>
     </div>
   </ion-slides>
+  </div>
 </ion-content>
