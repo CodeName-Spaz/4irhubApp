@@ -1,15 +1,74 @@
-<!--
-  Generated template for the ProfilePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-  <ion-navbar>
-    <ion-title>Profile</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content class="body">
+  <div class="popover">
+    <button ion-button clear class="popoverOptions" color="custom">Edit Profile</button>
+    <button ion-button clear class="popoverOptions" color="custom">Sign Out</button>
+  </div>
+  <ion-fab top right>
+    <button ion-fab clear mini color="trans" clear class="settings" icon-only (click)="showPopover()">
+      <ion-icon name="more"></ion-icon>
+    </button>
+  </ion-fab>
 
-<ion-content padding>
 
+  <div class="body" (click)="bodyClick()">
+    <div class="navs">
+
+      <div class="profile">
+        <div class="gradient">
+          <div class="username">
+            <h3>John Doe</h3>
+          </div>
+        </div>
+        <img src="../../assets/imgs/logo logo.jpg" class="displayPicture" alt="">
+        <div class="restOfBody">
+          <p class="infogram" id="theAbout">About</p>
+          <ion-card class="infoCard" padding>
+            <p class="subInfogram">Email</p>
+            <p>spazgrafficz@outlook.com</p>
+            <p class="subInfogram">
+              Mobile
+            </p>
+            <p>0813917127</p>
+            <p class="subInfogram">
+              Date of Birth
+            </p>
+            <p>30 March 1995</p>
+            <p class="subInfogram">
+              Year Graduated from Highschool
+            </p>
+            <p>2013</p>
+            <p class="subInfogram">
+              Residential Address
+            </p>
+            <p>4877 Ugago Street Protea Glen Ext 3 Johannesburg 1819</p>
+          </ion-card>
+
+          <p class="infogram" id="myReviews">My Reviews</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="empty">
+    <!-- show this if user has not made reviews -->
+    <img class="telescope" src="../../assets/imgs/Defaults/empty.png" alt="">  
+    <p class="itsEmpty">You haven't made any reviews so far...</p>
+    </div>
+  <ion-slides slidesPerView="2" color="dark">
+
+    <div>
+      <ion-slide>
+        <ion-card class="list">
+          <h3 class="orgName">The Department of Arts and Culture</h3>
+          <div class="stars">
+          </div>
+          <div class="overlay">
+
+          </div>
+          <img class="orgImage" src="../../assets/imgs/Wallpaper.jpg" alt="">
+
+        </ion-card>
+      </ion-slide>
+    </div>
+  </ion-slides>
 </ion-content>

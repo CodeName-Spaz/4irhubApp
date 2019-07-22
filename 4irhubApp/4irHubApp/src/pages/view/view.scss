@@ -7,22 +7,22 @@ page-view {
         width     : 100%;
         height    : 100%;
         position  : relative;
-        overflow: scroll;
+        overflow  : scroll;
         background: whitesmoke;
     }
 
     .splitter {
-        height    : 50px;
+        height: 50px;
     }
 
     .coverImage {
-        width        : 100%;
-        margin       : 0 auto;
-        height       : 220px;
-        background   : whitesmoke;
-        position     : relative;
-        box-shadow   : 0 0 10px rgba(0, 0, 0, 0.596);
-        z-index: 10;
+        width     : 100%;
+        margin    : 0 auto;
+        height    : 220px;
+        background: whitesmoke;
+        position  : relative;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.596);
+        z-index   : 10;
     }
 
     #date-of-issue {
@@ -83,9 +83,9 @@ page-view {
     }
 
     #region {
-        color        : grey;
-        text-align   : center;
-        font-weight  : bold;
+        color      : grey;
+        text-align : center;
+        font-weight: bold;
     }
 
     .view-body {
@@ -93,13 +93,15 @@ page-view {
         z-index   : 10;
         text-align: center;
     }
-    #viewInfo{
+
+    #viewInfo {
         height: 200px;
     }
 
     #seg-buttons {
-        padding:0;
+        padding   : 0;
         margin-top: 10px;
+
         ion-segment {
             border-bottom: 1px solid rgba(0, 0, 0, 0.178);
 
@@ -110,22 +112,19 @@ page-view {
         }
     }
 
-    #segmentShow {
-        
-    }
-
     #show-from-segment1 {
         width     : 100%;
-        max-height    : 94%;
+        max-height: 94%;
         background: whitesmoke;
         overflow-y: scroll;
         text-align: left;
         margin-top: 10px;
         border-top: 1px solid rgba(0, 0, 0, 0.171);
-        p{
-            padding-left: 5px;
+
+        p {
+            padding-left : 5px;
             padding-right: 5px;
-            font-size: 12px;
+            font-size    : 12px;
         }
     }
 
@@ -133,15 +132,17 @@ page-view {
         width     : 100%;
         min-height: 20vh;
 
-        max-height    : 94%;
+        max-height: 94%;
         background: whitesmoke;
         margin-top: 0px;
         overflow-y: scroll;
     }
-    #contactDetail{
+
+    #contactDetail {
         margin-top: -10px;
     }
-    #more{
+
+    #more {
         border: 2px solid red;
         height: 14vh;
     }
@@ -154,18 +155,21 @@ page-view {
                 color      : rgb(0, 100, 200);
                 line-height: 20px;
                 font-size  : 20px;
-                p{  
+
+                p {
                     margin-top: 0;
-                    font-size: 11px
+                    font-size : 11px
                 }
-                div{
-                    transition : 200ms;
-                    border: 1px solid rgba(0, 0, 0, 0.288);
-                    padding: 0px;
-                    padding-top: 5px;
-                    height: 50px;
+
+                div {
+                    transition   : 200ms;
+                    border       : 1px solid rgba(0, 0, 0, 0.288);
+                    padding      : 0px;
+                    padding-top  : 5px;
+                    height       : 50px;
                     border-radius: 5px;
                 }
+
                 div:active {
                     background: rgb(177, 177, 177);
                 }
@@ -173,57 +177,63 @@ page-view {
 
         }
     }
-    #card{
-        width: 100%;
-        margin: 10px auto;
-        background: white;
+
+    #card {
+        width        : 100%;
+        margin       : 10px auto;
+        background   : white;
         border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.295);
-        border: 1px solid rgba(0, 0, 0, 0.226);
+        overflow     : hidden;
+        position     : relative;
+        box-shadow   : 0 0 10px rgba(0, 0, 0, 0.295);
+        border       : 1px solid rgba(0, 0, 0, 0.226);
     }
-    #user{
-        width: 100%;
+
+    #user {
+        width  : 100%;
         display: flex;
-        height: 60px;
+        height : 60px;
     }
-    .star-rating{
+
+    .star-rating {
         position: absolute;
-        right: 10px;
-        top: 5px;
-        color: orange
+        right   : 10px;
+        top     : 5px;
+        color   : orange
     }
-    #user > div:nth-child(1){
-        width: 60px;
-        height: 60px;
+
+    #user>div:nth-child(1) {
+        width  : 60px;
+        height : 60px;
         padding: 5px;
-        
-        img{
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
+
+        img {
+            width        : 50px;
+            height       : 50px;
+            object-fit   : cover;
             border-radius: 50px;
-            background: whitesmoke;
+            background   : whitesmoke;
         }
     }
-    
-    #user > div:nth-child(2){
-        width:calc(100% - 50px);
-        height: 60px;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
+
+    #user>div:nth-child(2) {
+        width          : calc(100% - 50px);
+        height         : 60px;
+        padding        : 10px;
+        display        : flex;
+        flex-direction : column;
         justify-content: center;
-        text-align: left;
+        text-align     : left;
     }
-    #timestamp{
+
+    #timestamp {
         margin-top: -10px;
-        font-size: 11px;
-        color: grey;
+        font-size : 11px;
+        color     : grey;
     }
-    #comment{
-        padding: 5px;
+
+    #comment {
+        padding   : 5px;
         text-align: left
     }
 }
