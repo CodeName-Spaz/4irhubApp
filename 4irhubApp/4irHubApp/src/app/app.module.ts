@@ -11,7 +11,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
 import { HubsProvider } from '../providers/hubs/hubs';
-
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,7 @@ import { HubsProvider } from '../providers/hubs/hubs';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HubsProvider,
+    Geolocation
  
   ]
 })
