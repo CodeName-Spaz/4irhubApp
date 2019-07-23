@@ -1,4 +1,4 @@
-import { Component,ElementRef, OnInit } from '@angular/core';
+import { Component,ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { NavController } from 'ionic-angular';
 // import { ViewmorePage } from '../viewmore/viewmore';
 // import { SearchPage } from '../search/search';
@@ -61,6 +61,8 @@ export class HomePage implements OnInit{
   services = new Array();
   programmes = new Array();
   getOrgArry = new Array();
+
+  alltypes = new Array();
   lat = -26.2620;
   name;
   address;
@@ -85,6 +87,7 @@ export class HomePage implements OnInit{
         this.hub.getProfile().then((data: any) => {
           this.img = data.downloadurl;
           this.CurrentName = data.name;
+          console.log(this.CurrentName)
         })
       }
       else if (data == false) {
@@ -93,15 +96,15 @@ export class HomePage implements OnInit{
     });
 
     this.hub.getJobs().then((data:any)=>{
-      this.jobs = data
+      this.alltypes = data
       console.log(this.jobs)
     })
     this.hub.getPrograme().then((data:any)=>{
-      this.programmes = data
+      this.alltypes = data
       console.log(this.programmes)
     })
     this.hub.getServices().then((data:any)=>{
-      this.services = data;
+      this.alltypes = data;
       console.log(this.services )
     })
 
@@ -129,7 +132,15 @@ export class HomePage implements OnInit{
     // })
   }
   viewAll() {
-    this.navCtrl.push(ViewmorePage)
+      // console.log(this.orgArray)
+      this.navCtrl.push(ViewmorePage)
+      for (var x = 0; x < this.alltypes.length; x++) {
+        if (name == this.alltypes[x].orgName) {
+          this.navCtrl.push(ViewmorePage, { orgObject: this.alltypes[x], loginState: this.logInState });
+          break;
+        }
+      }
+    
   }
   search(){
     this.navCtrl.push(SearchPage)
