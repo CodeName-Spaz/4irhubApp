@@ -6,10 +6,13 @@ import { ViewChild } from '@angular/core';
 import { HubsProvider } from '../../providers/hubs/hubs';
 import { Slides } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
+import { SearchPage } from '../search/search';
+import { ViewmorePage } from '../viewmore/viewmore';
 
 
 
 declare var google;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -125,12 +128,12 @@ export class HomePage implements OnInit{
     // this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     // })
   }
-  // viewAll() {
-  //   this.navCtrl.push(ViewmorePage)
-  // }
-  // search(){
-  //   this.navCtrl.push(SearchPage)
-  // }
+  viewAll() {
+    this.navCtrl.push(ViewmorePage)
+  }
+  search(){
+    this.navCtrl.push(SearchPage)
+  }
   //mappag switch
   mapswitch(){
     var maincontent = document.getElementById('maincontent')

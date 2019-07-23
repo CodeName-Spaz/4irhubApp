@@ -56,7 +56,7 @@ page-home {
         border-radius: 10px;
        // display: flex;
         box-shadow: 0px 15px 20px -15px rgb(53, 53, 53); 
-       background-color: rgba(255, 255, 255, 0.892)
+       //background-color: rgba(255, 255, 255, 0.892)
     }
     .card21{
         height: 15vh;
@@ -178,9 +178,9 @@ page-home {
     }
    
 ion-slides {
-    display: block;
+    //display: block;
     width: 100%;
-     height: 20%; 
+    height: 20%; 
 }
 .fruits{
     display: flex;
@@ -228,7 +228,13 @@ ion-slides {
     background-image: linear-gradient(to bottom right, rgb(0, 38, 255), rgb(0, 247, 255));
 }
 h4{
-   color: #02518a
+   color: #000000
+}
+.card2:active {
+    background: rgba(194, 251, 255, 0.3);
+}
+.card21:active {
+    background: rgba(198, 194, 255, 0.3);
 }
    
 }

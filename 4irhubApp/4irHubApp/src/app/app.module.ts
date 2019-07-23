@@ -12,6 +12,10 @@ import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
 import { HubsProvider } from '../providers/hubs/hubs';
 import { Geolocation } from '@ionic-native/geolocation';
+import { SearchPage } from '../pages/search/search';
+import { ViewmorePage } from '../pages/viewmore/viewmore';
+import { OnboardingPage } from '../pages/onboarding/onboarding';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { Geolocation } from '@ionic-native/geolocation';
     ViewPage,
     ProfilePage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    SearchPage,
+    ViewmorePage,
+    OnboardingPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,10 @@ import { Geolocation } from '@ionic-native/geolocation';
     ViewPage,
     ProfilePage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    SearchPage,
+    ViewmorePage,
+    OnboardingPage
   ],
   providers: [
     StatusBar,
