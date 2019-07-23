@@ -8,6 +8,7 @@ import { ViewPage } from '../pages/view/view';
 import { ProfilePage } from '../pages/profile/profile';
 import { SigninPage } from '../pages/signin/signin';
 import { HubsProvider } from '../providers/hubs/hubs';
+import { OnboardingPage } from '../pages/onboarding/onboarding';
 @Component({
   templateUrl: 'app.html'
 })
@@ -19,7 +20,7 @@ export class MyApp {
       
       hub.checkstate().then((data: any) => {
         if (data == 1) {
-          this.rootPage = HomePage
+          this.rootPage = OnboardingPage
         }
         else {
           this.rootPage = SigninPage

@@ -13,6 +13,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { HubsProvider } from '../providers/hubs/hubs';
 import { SearchPage } from '../pages/search/search';
 import { ViewmorePage } from '../pages/viewmore/viewmore';
+import { OnboardingPage } from '../pages/onboarding/onboarding';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ViewmorePage } from '../pages/viewmore/viewmore';
     SignupPage,
     SearchPage,
     ViewmorePage,
+    OnboardingPage
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { ViewmorePage } from '../pages/viewmore/viewmore';
     SignupPage,
     SearchPage,
     ViewmorePage,
+    OnboardingPage
   ],
   providers: [
     StatusBar,
