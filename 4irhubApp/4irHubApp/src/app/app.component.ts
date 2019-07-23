@@ -12,7 +12,7 @@ import { HubsProvider } from '../providers/hubs/hubs';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = SigninPage;
+  rootPage:any ;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public hub:HubsProvider) {
     platform.ready().then(() => {

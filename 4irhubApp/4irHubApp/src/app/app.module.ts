@@ -11,6 +11,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
 import { HubsProvider } from '../providers/hubs/hubs';
+import { SearchPage } from '../pages/search/search';
+import { ViewmorePage } from '../pages/viewmore/viewmore';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { HubsProvider } from '../providers/hubs/hubs';
     ViewPage,
     ProfilePage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    SearchPage,
+    ViewmorePage,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { HubsProvider } from '../providers/hubs/hubs';
     ViewPage,
     ProfilePage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    SearchPage,
+    ViewmorePage,
   ],
   providers: [
     StatusBar,
