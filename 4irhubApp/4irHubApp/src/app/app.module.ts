@@ -8,6 +8,10 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ViewPage } from '../pages/view/view';
 import { ProfilePage } from '../pages/profile/profile';
+import { SigninPage } from '../pages/signin/signin';
+import { SignupPage } from '../pages/signup/signup';
+import { HubsProvider } from '../providers/hubs/hubs';
+
 
 @NgModule({
   declarations: [
@@ -15,6 +19,8 @@ import { ProfilePage } from '../pages/profile/profile';
     HomePage,
     ViewPage,
     ProfilePage,
+    SigninPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -26,11 +32,15 @@ import { ProfilePage } from '../pages/profile/profile';
     HomePage,
     ViewPage,
     ProfilePage,
+    SigninPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HubsProvider,
+ 
   ]
 })
 export class AppModule {}

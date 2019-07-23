@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild, ElementRef, OnInit  } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HubsProvider } from '../../providers/hubs/hubs';
+import { LoadingController } from "ionic-angular";
+import { AlertController } from "ionic-angular";
 
+declare var google;
 /**
  * Generated class for the ProfilePage page.
  *
@@ -13,10 +17,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-profile',
   templateUrl: 'profile.html',
 })
-export class ProfilePage {
+export class ProfilePage{
 
   popState = 0;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public hub :HubsProvider) {
   }
 
   ionViewDidLoad() {
