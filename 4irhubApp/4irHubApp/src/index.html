@@ -18,6 +18,24 @@
   <!-- cordova.js required for cordova apps (remove if not needed) -->
   <script src="cordova.js"></script>
 
+
+  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDJ43hNkwFMIbN-byQHkhC2-C_eZla1LAY",
+      authDomain: "new4irhubdatbase.firebaseapp.com",
+      databaseURL: "https://new4irhubdatbase.firebaseio.com",
+      projectId: "new4irhubdatbase",
+      storageBucket: "new4irhubdatbase.appspot.com",
+      messagingSenderId: "574481394265",
+      appId: "1:574481394265:web:0ea67c2de752aa8a"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
   <!-- un-comment this code to enable service worker
   <script>
     if ('serviceWorker' in navigator) {
@@ -44,6 +62,7 @@
 
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
-
+  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT55USDnQ-tZLHJlzryDJbxseD8sLSdZE&callback=initMap">
+  </script> -->
 </body>
 </html>
