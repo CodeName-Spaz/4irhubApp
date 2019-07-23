@@ -11,23 +11,24 @@
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-buttons end>
+    <!-- <ion-buttons end>
       <button ion-button icon-only color="royal">
         <ion-icon name="more"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
-  <!-- <ion-toolbar id="toolbar1" color="primary" style="display: none;">
-  <ion-searchbar  (input)="getItems($event)"></ion-searchbar>
-  <ion-buttons end>
-      <button ion-button icon-only color="royal" (click)="search()">
-        <ion-icon name="search"></ion-icon>
-      </button>
-    </ion-buttons>
-</ion-toolbar> -->
+  
 
 </ion-header>
 
+<ion-toolbar id="toolbar1" color="primary" style="display: none;">
+  <ion-searchbar  (input)="getItems($event)"></ion-searchbar>
+  <ion-buttons text-right end>
+      <button ion-button icon-only color="royal" (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+</ion-toolbar>
 
 <ion-content class="backgroung" id="maincontent">
   <div class="test1"></div>
@@ -65,16 +66,16 @@
 
 
 
-  <!-- <ion-grid>
+  <ion-grid>
     <ion-row>
       <ion-col>
         <h3 padding-left>What we offer</h3>
       </ion-col>
-      <ion-col>
+      <!-- <ion-col>
         <h5 text-end padding-right padding-top (click)='viewAll()'>See All</h5>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
-  </ion-grid> -->
+  </ion-grid>
   <div class="line"></div>
   <!-- <ion-grid>
 
@@ -156,13 +157,25 @@
       </ion-col>
     </ion-row>
   </ion-grid> -->
+  <ion-list  *ngFor="let a of getOrgArry">
+    <ion-card class="card2">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="{{a.downloadurlLogo}}">
+        </ion-thumbnail>
+        <h2>{{a.name}}</h2>
+        <p>{{a.background}}</p>
+        <button ion-button clear item-end>View</button>
+      </ion-item>
+    </ion-card>
+    </ion-list>
 
-  <ion-card *ngFor="let a of getOrgArry">
+  <!-- <ion-card *ngFor="let a of getOrgArry">
     <p>{{a.name}}</p>
     <p>{{a.background}}</p>
     <img src="{{a.downloadurlLogo}}"> 
 
-  </ion-card>
+  </ion-card> -->
 
   <ion-fab bottom right>
     <button ion-fab mini (click)='mapswitch()' class="mapfab">
