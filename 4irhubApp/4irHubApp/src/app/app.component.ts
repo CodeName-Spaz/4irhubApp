@@ -8,18 +8,19 @@ import { ViewPage } from '../pages/view/view';
 import { ProfilePage } from '../pages/profile/profile';
 import { SigninPage } from '../pages/signin/signin';
 import { HubsProvider } from '../providers/hubs/hubs';
+import { OnboardingPage } from '../pages/onboarding/onboarding';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ProfilePage;
+  rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public hub:HubsProvider) {
     platform.ready().then(() => {
       
       hub.checkstate().then((data: any) => {
         if (data == 1) {
-          this.rootPage = HomePage
+          this.rootPage = OnboardingPage
         }
         else {
           this.rootPage = SigninPage

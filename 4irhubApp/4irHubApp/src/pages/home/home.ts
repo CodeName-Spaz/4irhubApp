@@ -1,4 +1,4 @@
-import { Component,ElementRef, OnInit } from '@angular/core';
+import { Component,ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { NavController } from 'ionic-angular';
 // import { ViewmorePage } from '../viewmore/viewmore';
 // import { SearchPage } from '../search/search';
@@ -6,6 +6,13 @@ import { ViewChild } from '@angular/core';
 import { HubsProvider } from '../../providers/hubs/hubs';
 import { Slides } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
+import { SearchPage } from '../search/search';
+import { ViewmorePage } from '../viewmore/viewmore';
+
+
+
+declare var google;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -36,25 +43,108 @@ export class HomePage implements OnInit{
   },
   ]
   catescrollist = ['Business', 'Relationships', 'Life', 'Love', 'Wealth']
-  constructor(public navCtrl: NavController,public hub:HubsProvider) {
+  img = "../../assets/download.png";
+  logInState;
+  CurrentName;
+  userLocation = "Searching for location...";
+  map;
 
+  lng;
+  directionsService;
+  directionsDisplay;
+  service;
+  geocoder;
+  currentLocState = false;
+  currentUserlat;
+  currentUserlng;
+  jobs = new Array();
+  services = new Array();
+  programmes = new Array();
+  getOrgArry = new Array();
+
+  alltypes = new Array();
+  lat = -26.2620;
+  name;
+  address;
+  background;
+  category;
+  contact;
+  downloadurl;
+  downloadurlLogo;
+  email;
+  freeWifi;
+  region;
+  website;
+  long = 27.9503;
+  wifi;
+  wifiRange;
+  key;
+
+  constructor(public navCtrl: NavController,public hub:HubsProvider) {
+    this.hub.checkAuthState().then(data => {
+      if (data == true) {
+        this.logInState = true;
+        this.hub.getProfile().then((data: any) => {
+          this.img = data.downloadurl;
+          this.CurrentName = data.name;
+          console.log(this.CurrentName)
+        })
+      }
+      else if (data == false) {
+        this.img = "../../assets/download.png";
+      }
+    });
 
     this.hub.getJobs().then((data:any)=>{
-      console.log(data)
+      this.alltypes = data
+      console.log(this.jobs)
     })
     this.hub.getPrograme().then((data:any)=>{
-      console.log(data)
+      this.alltypes = data
+      console.log(this.programmes)
     })
     this.hub.getServices().then((data:any)=>{
-      console.log(data)
+      this.alltypes = data;
+      console.log(this.services )
     })
+
+
+    this.hub.getAllOrganizations().then((data: any) => {
+      this.getOrgArry = data
+      this.name = data.name
+      this.address = data.address
+      this.lat = data.lat;
+      this.background = data.background
+      this.category = data.category;
+      this.downloadurl =data.downloadurl;
+      this.downloadurlLogo = data.downloadurlLogo;
+      this.wifi = data.wifi;
+      this.long = data.long;
+      this.email = data.email;
+      this.contact = data.contact
+      this.key = data.id
+      console.log(this.name)
+    })
+
+
+
+    // this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
+    // })
   }
-  // viewAll() {
-  //   this.navCtrl.push(ViewmorePage)
-  // }
-  // search(){
-  //   this.navCtrl.push(SearchPage)
-  // }
+  viewAll() {
+      // console.log(this.orgArray)
+      this.navCtrl.push(ViewmorePage)
+      for (var x = 0; x < this.alltypes.length; x++) {
+        if (name == this.alltypes[x].orgName) {
+          this.navCtrl.push(ViewmorePage, { orgObject: this.alltypes[x], loginState: this.logInState });
+          break;
+        }
+      }
+    
+  }
+  search(){
+    this.navCtrl.push(SearchPage)
+  }
   //mappag switch
   mapswitch(){
     var maincontent = document.getElementById('maincontent')
@@ -83,99 +173,116 @@ export class HomePage implements OnInit{
  
 
   ngOnInit() {
-    // this.initMap();
+    this.initMap();
 
 
   }
-  // initMap() {
-  //   setTimeout(() => {
-  //     this.hubs.getLocation(this.lat, this.long).then((data: any) => {
-  //       this.userLocation = data;
-  //       console.log(this.userLocation)
-  //     })
-  //   }, 1000);
-  //   let loading = this.loadingCtrl.create({
-  //     spinner: 'bubbles',
-  //     content: 'Please wait...',
-  //     duration: 15000
-  //   });
-  //   const options = {
-  //     center: { lat: this.lat, lng: this.long },
-  //     zoom: 10,
-  //     disableDefaultUI: true,
-  //     icon: this.icon,
-  //     styles: this.mapStyles
-  //   }
-  //   var map = new google.maps.Map(this.mapRef.nativeElement, options);
-  //   this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-  //   var marker = new google.maps.Marker({
-  //     map: this.map,
-  //     zoom: 10,
-  //     icon: this.locIcon,
-  //     title: 'Your Location',
-  //     position: this.map.getCenter(),
-  //     styles: this.mapStyles
-  //   });
-  //   setTimeout(() => {
-  //     this.markers();
-  //   }, 16000)
-  //   setTimeout(() => {
-  //     var contentString = '<div id="content">' +
-  //       '</div>' +
-  //       this.userLocation
-  //     '</div>';
 
-  //     var infowindow = new google.maps.InfoWindow({
-  //       content: contentString
-  //     });
+  ionViewWillEnter() {
+    this.directionsService = new google.maps.DirectionsService;
+    this.directionsDisplay = new google.maps.DirectionsService;
+    this.directionsDisplay = new google.maps.DirectionsRenderer;
+    this.service = new google.maps.DistanceMatrixService();
+    this.geocoder = new google.maps.Geocoder;
 
-  //     marker.addListener('click', function () {
-  //       infowindow.open(map, marker);
-  //       map.setZoom(13);
-  //       map.setCenter(marker.getPosition());
-  //     });
-  //   }, 4000);
+    this.hub.getUserLocation().then((data: any) => {
+      if (data != null) {
+        this.currentLocState = true;
+        this.currentUserlat = data.coords.latitude;
+        this.currentUserlng = data.coords.longitude;
+      }
+    })
+  }
 
+  initMap() {
+    setTimeout(() => {
+      this.hub.getLocation(this.lat, this.long).then((data: any) => {
+        this.userLocation = data;
+        console.log(this.userLocation)
+      })
+    }, 1000);
+    // let loading = this.loadingCtrl.create({
+    //   spinner: 'bubbles',
+    //   content: 'Please wait...',
+    //   duration: 15000
+    // });
+    const options = {
+      center: { lat: this.lat, lng: this.long },
+      zoom: 10,
+      disableDefaultUI: true,
+      // icon: this.icon,
+      styles: this.mapStyles
+    }
+    var map = new google.maps.Map(this.mapRef.nativeElement, options);
+    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+    var marker = new google.maps.Marker({
+      map: this.map,
+      zoom: 10,
+      // icon: this.locIcon,
+      title: 'Your Location',
+      position: this.map.getCenter(),
+      styles: this.mapStyles
+    });
+    setTimeout(() => {
+      this.markers();
+    }, 16000)
+    setTimeout(() => {
+      var contentString = '<div id="content">' +
+        '</div>' +
+        this.userLocation
+      '</div>';
 
-  // }
-  // markers() {
-  //   console.log(this.getOrgArry);
-  //   for (let index = 0; index < this.getOrgArry.length; index++) {
-  //     var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
-  //     let showMultipleMarker = new google.maps.Marker({
-  //       map: this.map,
-  //       icon: this.icon,
-  //       title: this.getOrgArry[index].orgName,
-  //       size: { width: 5, height: 5 },
-  //       position: { lat: parseFloat(this.getOrgArry[index].lat), lng: parseFloat(this.getOrgArry[index].long) },
-  //       label: name,
-  //       zoom: 15,
-  //       styles: this.mapStyles
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
 
-  //     });
-  //     let infowindow = new google.maps.InfoWindow({
-  //       content:
-  //         '<div style="width: 400px; transition: 300ms;"><b>' +
-  //         this.getOrgArry[index].category +
-  //         '</b><div style="display: flex; padding-top: 10px;">' +
-  //         '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
-  //         this.getOrgArry[index].downloadurlLogo +
-  //         ">" +
-  //         '<div style="padding-left: 10px;padding-right: 10px">' +
-  //         this.getOrgArry[index].background +
-  //         "</div><br>" +
-  //         "</div>"
-  //     });
-  //     showMultipleMarker.addListener('click', () => {
-  //       this.map.setZoom(14);
-  //       this.map.setCenter(showMultipleMarker.getPosition());
-  //       infowindow.open(showMultipleMarker.get(this.map), showMultipleMarker);
+      marker.addListener('click', function () {
+        infowindow.open(map, marker);
+        map.setZoom(13);
+        map.setCenter(marker.getPosition());
+      });
+    }, 4000);
 
 
-  //     });
+  }
+  markers() {
+    console.log(this.jobs);
+    for (let index = 0; index < this.getOrgArry.length; index++) {
+      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
+      let showMultipleMarker = new google.maps.Marker({
+        map: this.map,
+        // icon: this.icon,
+        title: this.getOrgArry[index].orgName,
+        size: { width: 5, height: 5 },
+        position: { lat: parseFloat(this.getOrgArry[index].lat), lng: parseFloat(this.getOrgArry[index].long) },
+        label: name,
+        zoom: 15,
+        styles: this.mapStyles
 
-  //   }
-  // }
+      });
+      let infowindow = new google.maps.InfoWindow({
+        content:
+          '<div style="width: 400px; transition: 300ms;"><b>' +
+          this.getOrgArry[index].name +
+          '</b><div style="display: flex; padding-top: 10px;">' +
+          '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
+          this.getOrgArry[index].downloadurlLogo +
+          ">" +
+          '<div style="padding-left: 10px;padding-right: 10px">' +
+          this.getOrgArry[index].background +
+          "</div><br>" +
+          "</div>"
+      });
+      showMultipleMarker.addListener('click', () => {
+        this.map.setZoom(14);
+        this.map.setCenter(showMultipleMarker.getPosition());
+        infowindow.open(showMultipleMarker.get(this.map), showMultipleMarker);
+
+
+      });
+
+    }
+  }
 
 
   mapStyles = [

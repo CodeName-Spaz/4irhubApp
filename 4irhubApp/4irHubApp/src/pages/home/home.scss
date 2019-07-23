@@ -144,10 +144,14 @@ page-home {
     #theMap{
         width: 100%;
         height:100%;
-        z-index: -1;
+        // z-index: -1;
        
         
        }
+       #map {
+        width: 100%;
+        height: 100%;
+      }
     //    .cardsbottom{
     //        width: 100%;
     //    }
@@ -174,9 +178,9 @@ page-home {
     }
    
 ion-slides {
-    display: block;
+    //display: block;
     width: 100%;
-     height: 20%; 
+    height: 20%; 
 }
 .fruits{
     display: flex;
@@ -224,7 +228,13 @@ ion-slides {
     background-image: linear-gradient(to bottom right, rgb(0, 38, 255), rgb(0, 247, 255));
 }
 h4{
-   color: #02518a
+   color: #000000
+}
+.card2:active {
+    background: rgba(194, 251, 255, 0.3);
+}
+.card21:active {
+    background: rgba(198, 194, 255, 0.3);
 }
    
 }
