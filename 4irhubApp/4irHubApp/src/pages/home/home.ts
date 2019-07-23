@@ -132,7 +132,15 @@ export class HomePage implements OnInit{
     this.navCtrl.push(ViewmorePage)
   }
   search(){
-    this.navCtrl.push(SearchPage)
+    //this.navCtrl.push(SearchPage)
+    var search = document.getElementById('toolbar1');
+    search.style.display = "flex"
+  }
+
+  close(){
+    //this.navCtrl.push(SearchPage)
+    var search = document.getElementById('toolbar1');
+    search.style.display = "none"
   }
   //mappag switch
   mapswitch(){
