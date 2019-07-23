@@ -3,8 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HubsProvider } from '../../providers/hubs/hubs';
 import { LoadingController } from "ionic-angular";
 import { AlertController } from "ionic-angular";
+import { SigninPage } from '../signin/signin';
 
 declare var google;
+declare var firebase;
 /**
  * Generated class for the ProfilePage page.
  *
@@ -18,10 +20,26 @@ declare var google;
   templateUrl: 'profile.html',
 })
 export class ProfilePage{
-
+  detailArray = new Array();
   popState = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams,public hub :HubsProvider) {
+ 
   }
+
+  ionViewDidEnter() {
+    this.detailArray.length = 0;
+    console.log('ionViewDidLoad ProfilePage');
+    let userID = firebase.auth().currentUser;
+    firebase.database().ref("Users/" + "/" + "App_Users/" + userID.uid).on('value', (data: any) => {
+      let details = data.val();
+      this.detailArray.length = 0;
+      console.log(details)
+      this.detailArray.push(details);
+      console.log(details);
+      
+    });
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
@@ -87,5 +105,15 @@ export class ProfilePage{
 
   bodyClick(){
     this.removePopper()
+  }
+
+
+  logOut() {
+    this.bodyClick()
+    this.hub.logout().then(() => {
+      this.navCtrl.push(SigninPage, { out: 'logout' });
+    }, (error) => {
+      console.log(error.message);
+    })
   }
 }

@@ -1,7 +1,7 @@
 <ion-content class="body">
   <div class="popover">
     <button ion-button clear class="popoverOptions" color="custom">Edit Profile</button>
-    <button ion-button clear class="popoverOptions" color="custom">Sign Out</button>
+    <button ion-button clear class="popoverOptions" color="custom" (click)="logOut()">Sign Out</button>
   </div>
   <ion-fab top right>
     <button ion-fab clear mini color="trans" clear class="settings" icon-only (click)="showPopover()">
@@ -13,18 +13,18 @@
   <div class="myBody" (click)="bodyClick()">
     <div class="navs">
 
-      <div class="profile">
+      <div class="profile" *ngFor="let item of detailArray">
         <div class="gradient">
           <div class="username">
             <h3>John Doe</h3>
           </div>
         </div>
-        <img src="../../assets/imgs/logo logo.jpg" class="displayPicture" alt="">
+        <img src="{{item.downloadurl}}" class="displayPicture" alt="">
         <div class="restOfBody">
           <p class="infogram" id="theAbout">About</p>
           <ion-card class="infoCard" padding>
                 <p class="subInfogram">Email</p>
-                <p>spazgrafficz@outlook.com</p>
+                <p>{{item.email}}</p>
                 <p class="subInfogram">
                   Mobile
                 </p>
